@@ -1,0 +1,5 @@
+<div class="date-control">
+  <dp-date-picker [(ngModel)]="selectedDate" theme="dp-material" [config]="datePickerConfig" placeholder="{{currentDate}}" (ngModelChange)="close(selectedDate)"></dp-date-picker>
+</div>
+
+<div [chart]="chart"></div>

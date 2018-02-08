@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="form">
+    <h4 class="form__title">Add statistics of languages</h4>
+    <form name="form" [formGroup]="myForm" novalidate (ngSubmit)="f.form.valid && save(myForm.value)" #f="ngForm">
+      <input placeholder="Date" class="form__control" required formControlName="selectedDate" theme="dp-material"
+             [dpDayPicker]="config"/>
+      <div formArrayName="data">
+        <div *ngFor="let language of myForm.controls.data.controls; let i=index" class="panel panel-default">
+          <div class="form__body" [formGroupName]="i">
+            <div class="form__group">
+              <input type="text" class="form__control" formControlName="name" placeholder="Languages">
+            </div>
+            <div class="form__group">
+              <input type="number" class="form__control" formControlName="y" placeholder="Percent">
+            </div>
+            <div class="form__remove" *ngIf="myForm.controls.data.controls.length > 1" (click)="removeLanguage(i)">x
+            </div>
+          </div>
+        </div>
+      </div>
+      <div (click)="addLanguage()" class="form__add-btn btn">
+        Add another language
+      </div>
+      <div class="form__footer">
+        <button type="submit" class="btn" [disabled]="!myForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
